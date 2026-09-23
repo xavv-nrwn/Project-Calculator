@@ -1,4 +1,3 @@
-// Layout tombol sesuai PRD (5 baris x 4 kolom)
 const KEYS = [
   ["AC", "fn"], ["DEL", "fn"], ["%", "n"], ["÷", "op"],
   ["7", "n"], ["8", "n"], ["9", "n"], ["×", "op"],
@@ -33,8 +32,8 @@ let exprText = "";
 const format = (n) => (isFinite(n) ? String(parseFloat(n.toPrecision(12))) : "Error");
 
 function render() {
-  exprEl.textContent = exprText;
-  resultEl.textContent = current;
+  if (exprEl) exprEl.textContent = exprText;
+  if (resultEl) resultEl.textContent = current;
 }
 
 function compute() {
@@ -48,7 +47,18 @@ function press(key) {
   if (current === "Error" && key !== "AC") key = "AC";
 
   if (key === "AC") {
-    current = "0"; previous = null; operator = null; exprText = ""; fresh = false;
+    current = "0"; 
+    previous = null; 
+    operator = null; 
+    exprText = ""; 
+    fresh = false;
+
+    // Fix: Mereset input & hasil konversi jika ada di layar
+    const unitInput = document.getElementById("unitInput");
+    const unitResult = document.getElementById("unitResult");
+    if (unitInput) unitInput.value = "";
+    if (unitResult) unitResult.textContent = "";
+
   } else if (key === "DEL") {
     if (fresh) return;
     const short = current.length === 1 || (current.length === 2 && current[0] === "-");
@@ -83,16 +93,34 @@ function press(key) {
   render();
 }
 
-// Bangun tombol
-KEYS.forEach(([label, type]) => {
-  const btn = document.createElement("button");
-  btn.textContent = label;
-  btn.className = `calc-btn ${STYLE[type]}`;
-  btn.addEventListener("click", () => press(label));
-  padEl.appendChild(btn);
-});
+// Fitur Konversi Satuan
+function convertUnit() {
+  const inputEl = document.getElementById("unitInput");
+  const resultUnitEl = document.getElementById("unitResult");
+  if (!inputEl || !resultUnitEl) return;
+  
+  const val = parseFloat(inputEl.value);
+  if (isNaN(val)) {
+    resultUnitEl.textContent = "Masukkan angka meter yang valid!";
+    return;
+  }
+  const km = val / 1000;
+  resultUnitEl.textContent = `${val} m = ${km} km`;
+}
 
-// Dukungan keyboard
+// Render Tombol
+if (padEl) {
+  padEl.innerHTML = "";
+  KEYS.forEach(([label, type]) => {
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = `calc-btn p-4 text-xl font-medium rounded-2xl transition-all duration-150 active:scale-95 ${STYLE[type]}`;
+    btn.addEventListener("click", () => press(label));
+    padEl.appendChild(btn);
+  });
+}
+
+// Event Listener Keyboard
 document.addEventListener("keydown", (e) => {
   const map = { "*": "×", "/": "÷", Enter: "=", "=": "=", Backspace: "DEL", Escape: "AC", Delete: "AC" };
   const key = map[e.key] || e.key;
