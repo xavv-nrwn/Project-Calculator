@@ -6,10 +6,21 @@ Proyek kolaborasi tim KodeKita Studio — Simulasi Tim Developer, RPL Kelas XI.
 
 Aplikasi kalkulator sederhana yang mendukung operasi hitung dasar (tambah, kurang, kali, bagi). Dibangun sebagai simulasi proyek klien menggunakan alur kerja kolaborasi Git & GitHub ala industri IT.
 
-👥 Anggota Tim & Peran
+- Anggota Tim & Peran
 Nama	    Peran	                    
 [Xaviero]	Project Manager (PM)	   
 [Irsyam]	Front-End Developer	       
 [Rafi]	    Back-End Developer	        
 [Revan]	    UI/UX & Dokumentasi	        
-[Azri]	    QA / Tester	           
+[Azri]	    QA / Tester	          
+
+- Cara Menjalankan Aplikasi
+bash
+# Clone repository
+git clone [link-repo-nya]
+
+# Masuk ke folder proyek
+cd [nama-folder]
+
+# 🔧 [Tambahkan langkah run sesuai teknologi yang dipakai, contoh:]
+# Kalau pakai HTML/CSS/JS -> buka index.html di browser
