@@ -48,3 +48,5 @@ cd [nama-folder]
 | 2 | Tampilan UI | UI/UX | Done |
 | 3 | Dokumentasi (README) | Nama | In Progress |
 | 4 | Testing | QA | In Progress |
+
+![Calculator](asset/kalkulator.png)
