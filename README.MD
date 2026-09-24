@@ -25,8 +25,9 @@ cd [nama-folder]
 # Kalau pakai HTML/CSS/JS -> buka index.html di browser
 
 # Daftar Tugas Tim
-No	Tugas	                                 PIC	    Status
-1	Kalkulator dasar (+, -, ×, ÷)	         FrontEnd	Done
-2	Tampilan UI	                             UI/UX	    Done
-3	Dokumentasi (README)	                 nama 	    In Progress
-4	Testing	                                 QA	        In Progress
+| No | Tugas | PIC | Status |
+|---|---|---|---|
+| 1 | Kalkulator dasar (+, -, ×, ÷) | FrontEnd | Done |
+| 2 | Tampilan UI | UI/UX | Done |
+| 3 | Dokumentasi (README) | Nama | In Progress |
+| 4 | Testing | QA | In Progress |
