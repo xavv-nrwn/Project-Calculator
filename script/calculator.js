@@ -1,4 +1,3 @@
-// Layout tombol sesuai PRD (5 baris x 4 kolom)
 const KEYS = [
   ["AC", "fn"], ["DEL", "fn"], ["%", "n"], ["÷", "op"],
   ["7", "n"], ["8", "n"], ["9", "n"], ["×", "op"],
@@ -33,8 +32,8 @@ let exprText = "";
 const format = (n) => (isFinite(n) ? String(parseFloat(n.toPrecision(12))) : "Error");
 
 function render() {
-  exprEl.textContent = exprText;
-  resultEl.textContent = current;
+  if (exprEl) exprEl.textContent = exprText;
+  if (resultEl) resultEl.textContent = current;
 }
 
 function compute() {
@@ -83,16 +82,19 @@ function press(key) {
   render();
 }
 
-// Bangun tombol
-KEYS.forEach(([label, type]) => {
-  const btn = document.createElement("button");
-  btn.textContent = label;
-  btn.className = `calc-btn ${STYLE[type]}`;
-  btn.addEventListener("click", () => press(label));
-  padEl.appendChild(btn);
-});
+// Render Tombol
+if (padEl) {
+  padEl.innerHTML = "";
+  KEYS.forEach(([label, type]) => {
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = `calc-btn p-4 text-xl font-medium rounded-2xl transition-all duration-150 active:scale-95 ${STYLE[type]}`;
+    btn.addEventListener("click", () => press(label));
+    padEl.appendChild(btn);
+  });
+}
 
-// Dukungan keyboard
+// Event Listener Keyboard
 document.addEventListener("keydown", (e) => {
   const map = { "*": "×", "/": "÷", Enter: "=", "=": "=", Backspace: "DEL", Escape: "AC", Delete: "AC" };
   const key = map[e.key] || e.key;
