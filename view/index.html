@@ -5,14 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Kalkulator</title>
   <link rel="stylesheet" href="/src/output.css">
+  <style>
+    .calc-btn {
+      @apply p-4 text-xl font-medium rounded-2xl transition-all duration-150 active:scale-95 flex items-center justify-center;
+    }
+  </style>
 </head>
 <body>
-  <main class="min-h-screen flex items-center justify-center p-4">
+  <main class="min-h-screen flex flex-col items-center justify-center p-4">
     <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-lg shadow-blue-500/10">
+      <!-- Display Screen -->
       <div class="bg-slate-950 rounded-2xl px-4 py-4 mb-4 text-right overflow-hidden" aria-live="polite">
         <div id="expr" class="text-slate-400 text-sm h-5 truncate"></div>
         <div id="result" class="text-white text-4xl font-semibold mt-1 h-12 overflow-x-auto whitespace-nowrap tabular-nums">0</div>
       </div>
+      
+      <!-- Keypad Grid -->
       <div id="pad" class="grid grid-cols-4 gap-3"></div>
     </div>
   </main>
