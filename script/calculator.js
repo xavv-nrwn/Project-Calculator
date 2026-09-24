@@ -1,3 +1,4 @@
+// Configuration & Keys
 const KEYS = [
   ["AC", "fn"], ["DEL", "fn"], ["%", "n"], ["÷", "op"],
   ["7", "n"], ["8", "n"], ["9", "n"], ["×", "op"],
@@ -19,23 +20,28 @@ const OPS = {
   "÷": (a, b) => a / b,
 };
 
+// DOM Elements
 const exprEl = document.getElementById("expr");
 const resultEl = document.getElementById("result");
 const padEl = document.getElementById("pad");
 
+// Application States
 let current = "0";
 let previous = null;
 let operator = null;
 let fresh = false;
 let exprText = "";
+let historyList = [];
 
 const format = (n) => (isFinite(n) ? String(parseFloat(n.toPrecision(12))) : "Error");
 
+// Render Display
 function render() {
   if (exprEl) exprEl.textContent = exprText;
   if (resultEl) resultEl.textContent = current;
 }
 
+// Math Computation
 function compute() {
   const a = parseFloat(previous);
   const b = parseFloat(current);
@@ -43,6 +49,23 @@ function compute() {
   return format(OPS[operator](a, b));
 }
 
+// History Functions
+function addToHistory(expr, result) {
+  historyList.unshift(`${expr} ${result}`);
+  renderHistory();
+}
+
+function renderHistory() {
+  const historyEl = document.getElementById("historyList");
+  if (!historyEl) return;
+  
+  historyEl.innerHTML = historyList
+    .slice(0, 3)
+    .map(item => `<li class="text-xs text-slate-400 py-0.5 border-b border-slate-800/50">${item}</li>`)
+    .join("");
+}
+
+// Button Key Press Logic
 function press(key) {
   if (current === "Error" && key !== "AC") key = "AC";
 
@@ -53,7 +76,7 @@ function press(key) {
     exprText = ""; 
     fresh = false;
 
-    // Fix: Mereset input & hasil konversi jika ada di layar
+    // Reset input dan hasil konversi
     const unitInput = document.getElementById("unitInput");
     const unitResult = document.getElementById("unitResult");
     if (unitInput) unitInput.value = "";
@@ -77,8 +100,17 @@ function press(key) {
   } else if (key === "=") {
     if (operator === null || previous === null) return;
     const full = `${previous} ${operator} ${current} =`;
-    current = compute();
-    exprText = full; previous = null; operator = null; fresh = true;
+    const res = compute();
+    
+    if (res !== "Error") {
+      addToHistory(full, res);
+    }
+
+    current = res;
+    exprText = full; 
+    previous = null; 
+    operator = null; 
+    fresh = true;
   } else {
     if (operator !== null && !fresh) {
       const r = compute();
@@ -108,7 +140,7 @@ function convertUnit() {
   resultUnitEl.textContent = `${val} m = ${km} km`;
 }
 
-// Render Tombol
+// Render Keypad Buttons
 if (padEl) {
   padEl.innerHTML = "";
   KEYS.forEach(([label, type]) => {
@@ -120,6 +152,7 @@ if (padEl) {
   });
 }
 
+// Keyboard Support
 document.addEventListener("keydown", (e) => {
   const map = { "*": "×", "/": "÷", Enter: "=", "=": "=", Backspace: "DEL", Escape: "AC", Delete: "AC" };
   const key = map[e.key] || e.key;
