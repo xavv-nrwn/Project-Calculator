@@ -104,4 +104,21 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+<<<<<<< HEAD
 render();
+
+function convertUnit() {
+  const inputEl = document.getElementById("unitInput");
+  const resultUnitEl = document.getElementById("unitResult");
+  const val = parseFloat(inputEl.value);
+
+  if (isNaN(val)) {
+    resultUnitEl.textContent = "Masukkan angka meter yang valid!";
+    return;
+  }
+  const km = val / 1000;
+  resultUnitEl.textContent = `${val} m = ${km} km`;
+}
+=======
+render();
+>>>>>>> 55a49f3a86a3b149417235d17d0041b9e97b8fb9
