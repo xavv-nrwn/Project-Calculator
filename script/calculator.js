@@ -93,6 +93,7 @@ function press(key) {
   render();
 }
 
+<<<<<<< HEAD
 // Fitur Konversi Satuan
 function convertUnit() {
   const inputEl = document.getElementById("unitInput");
@@ -120,6 +121,20 @@ if (padEl) {
   });
 }
 
+=======
+// Render Tombol
+if (padEl) {
+  padEl.innerHTML = "";
+  KEYS.forEach(([label, type]) => {
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = `calc-btn p-4 text-xl font-medium rounded-2xl transition-all duration-150 active:scale-95 ${STYLE[type]}`;
+    btn.addEventListener("click", () => press(label));
+    padEl.appendChild(btn);
+  });
+}
+
+>>>>>>> 264b45cb8df0fce7f91338e708a2c9c597cba499
 // Event Listener Keyboard
 document.addEventListener("keydown", (e) => {
   const map = { "*": "×", "/": "÷", Enter: "=", "=": "=", Backspace: "DEL", Escape: "AC", Delete: "AC" };
@@ -130,4 +145,25 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+<<<<<<< HEAD
 render();
+=======
+<<<<<<< HEAD
+render();
+
+function convertUnit() {
+  const inputEl = document.getElementById("unitInput");
+  const resultUnitEl = document.getElementById("unitResult");
+  const val = parseFloat(inputEl.value);
+
+  if (isNaN(val)) {
+    resultUnitEl.textContent = "Masukkan angka meter yang valid!";
+    return;
+  }
+  const km = val / 1000;
+  resultUnitEl.textContent = `${val} m = ${km} km`;
+}
+=======
+render();
+>>>>>>> 55a49f3a86a3b149417235d17d0041b9e97b8fb9
+>>>>>>> 264b45cb8df0fce7f91338e708a2c9c597cba499
