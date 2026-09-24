@@ -17,24 +17,24 @@ Aplikasi kalkulator sederhana yang mendukung operasi hitung dasar (tambah, kuran
 
 ## Bahasa & Teknologi yang Digunakan
 
-- **HTML5** - Untuk membuat struktur antarmuka web[cite: 4].
-- **JavaScript (ES6+)** - Untuk logika perhitungan kalkulator dan manipulasi DOM[cite: 4].
-- **Tailwind CSS** - Untuk *styling* antarmuka tampilan UI[cite: 4].
+- **HTML** - Untuk membuat struktur antarmuka web.
+- **JavaScript** - Untuk logika perhitungan kalkulator dan manipulasi DOM.
+- **Tailwind CSS** - Untuk *styling* antarmuka tampilan UI.
 
 ---
 
 ## Cara Menjalankan Aplikasi
 
 ### Cara 1: Menggunakan Live Server di VS Code (Direkomendasikan)
-1. Buka folder `view` di explorer VS Code[cite: 4].
-2. Klik file `index.html`[cite: 4].
-3. Klik tombol **Go Live** di pojok kanan bawah jendela VS Code[cite: 4].
+1. Buka folder `view` di explorer VS Code.
+2. Klik file `index.html`.
+3. Klik tombol **Go Live** di pojok kanan bawah jendela VS Code.
 4. Aplikasi akan otomatis berjalan di browser kamu.
 
 ### Cara 2: Membuka File Langsung
-1. Buka folder proyek `Project-Calculator` di File Explorer komputer kamu[cite: 4].
-2. Masuk ke dalam folder `view`[cite: 4].
-3. Klik dua kali pada file `index.html` untuk membukanya di Google Chrome atau browser lainnya[cite: 4].
+1. Buka folder proyek `Project-Calculator` di File Explorer komputer kamu.
+2. Masuk ke dalam folder `view`.
+3. Klik dua kali pada file `index.html` untuk membukanya di Google Chrome atau browser lainnya.
 
 # Masuk ke folder proyek
 cd [nama-folder]
