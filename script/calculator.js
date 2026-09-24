@@ -104,6 +104,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+<<<<<<< HEAD
 render();
 
 function convertUnit() {
@@ -118,3 +119,6 @@ function convertUnit() {
   const km = val / 1000;
   resultUnitEl.textContent = `${val} m = ${km} km`;
 }
+=======
+render();
+>>>>>>> 55a49f3a86a3b149417235d17d0041b9e97b8fb9
