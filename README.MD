@@ -30,3 +30,5 @@ No	Tugas	                                 PIC	    Status
 2	Tampilan UI	                             UI/UX	    Done
 3	Dokumentasi (README)	                 nama 	    In Progress
 4	Testing	                                 QA	        In Progress
+
+![asset](asset/kalkulator.png)
